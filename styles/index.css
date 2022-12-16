@@ -1,7 +1,6 @@
 /* Desenvolva sua estilização aqui... */
 .container__header{
-    background-image: url("/assets/img/header-bg.png");
-    opacity: 70%;
+    background-image: url("/assets/img/header.png");
     width: 100%;
     min-height: 100vh;
     background-attachment: fixed;
@@ -91,8 +90,10 @@
     color: var(--color-grey-2);
     font-size: var(--text-3);
     background-color: var(--color-grey-3);
-    width: 6rem;
-    height: 1.6rem;
+    width: 10rem;
+    height: 6vh;
+    padding: 1vh;
+    text-align: center;
     border: none;
     border-radius: var(--radius-default);
 }
@@ -105,15 +106,22 @@
     width: 12rem;
     height: 2.3rem;
     border-radius: var(--radius-default);
-    margin: 1rem 1rem;
     cursor: pointer;
+    border: none;
+    margin-top: 1rem;
+}
+
+.divButton{
+    display: flex;
+    flex-direction: column;
 }
 
 .titulo__aside{
     color: var(--color-grey-1);
     font-size: var(--title-5);
     font-weight: 600;
-    margin: 3rem -1rem;
+    margin: 2rem 2rem;
+    width: 300px;
 }
 
 .mensagem{
@@ -122,7 +130,29 @@
     margin: 1rem;
 }
 
-.container__aside{
+.titulo__vaga--selecao{
+    font-size: var(--text-3);
+    color: var(--color-grey-1);
+    margin: .5rem;
+}
+
+.empresa--selecao, .cidade--selecao{
+    color: var(--color-grey-2);
+    font-size: var(--text-3);
+    margin: 0 1rem 0 .7rem;
+}
+
+.button__remove{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: -17px;
+    left: 13rem;
+    border: none;
+    cursor: pointer;
+}
+
+.container__Aside{
     background-color: var(--color-grey-6);
     width: 16rem;
     height: 22rem;
@@ -130,6 +160,7 @@
     padding: .1rem .1rem;
     border-radius: var(--radius-default);
     list-style: none;
+    overflow-x: hidden;
 }
 
 @media(min-width: 400px){
@@ -160,11 +191,21 @@
         margin: 0rem .5rem 2rem 2rem;
     }
 
-    .button__candidatar{
-        margin: 2rem 1rem;
+    .divButton{
+        display: flex;
+        flex-direction: row;
     }
 
-    .container__aside{
+    .button__candidatar{
+        margin: 0 1rem;
+    }
+
+    .button__remove{
+        top: -1rem;
+        left: 21rem;
+    }
+
+    .container__Aside{
         width: 23rem;
         margin: 0rem .5rem 2rem 2rem;
     }
@@ -178,10 +219,15 @@
     }
 
     .button__candidatar{
-        margin: 2rem 4.7rem;
+        margin: 0 0 0 4rem;
     }
 
-    .container__aside{
+    .button__remove{
+        top: -1rem;
+        left: 23rem;
+    }
+
+    .container__Aside{
         width: 29rem;
     }
 }
@@ -198,19 +244,21 @@
         margin: 0rem .5rem 2rem 4rem;
     }
 
-    .tipo__vaga{
-        margin: 1rem;
-    }
-
     .button__candidatar{
-        margin: 0rem 7rem;
+        margin: 0 0 0 12rem;
     }
 
     .titulo__aside{
-        margin: 1.5rem 4.5rem;
+        margin: 1.5rem 4rem;
     }
 
-    .container__aside{
+    .button__remove{
+        position: relative;
+        top: -30px;
+        left: 23rem;
+    }
+
+    .container__Aside{
         width: 36rem;
         margin: 0rem .5rem 2rem 4rem;
     }
@@ -228,19 +276,11 @@
         margin: 0rem .5rem 2rem 4rem;
     }
 
-    .tipo__vaga{
-        margin: 1rem;
-    }
-
     .button__candidatar{
-        margin: 0rem 8.7rem;
+        margin: 0 0 0 15rem;
     }
 
-    .titulo__aside{
-        margin: 1.5rem 4.5rem;
-    }
-
-    .container__aside{
+    .container__Aside{
         width: 39rem;
         margin: 0rem .5rem 2rem 4rem;
     }
@@ -258,19 +298,17 @@
         margin: 0rem .5rem 2rem 4rem;
     }
 
-    .tipo__vaga{
-        margin: 1rem;
-    }
-
     .button__candidatar{
-        margin: 0rem 11.7rem;
+        margin: 0 0 0 19rem;
     }
 
-    .titulo__aside{
-        margin: 1.5rem 4.5rem;
+    .button__remove{
+        position: relative;
+        top: -30px;
+        left: 23rem;
     }
 
-    .container__aside{
+    .container__Aside{
         width: 45rem;
         margin: 0rem .5rem 2rem 4rem;
     }
@@ -278,7 +316,19 @@
 
 @media(min-width: 1200px){
 
-    .container__aside{
+    .container__div1{
+        width: 45rem;
+        height: 18rem;
+        margin: 0rem .5rem 2rem 1rem;
+    }
+
+    .button__remove{
+        position: relative;
+        top: -30px;
+        left: 23rem;
+    }
+
+    .container__Aside{
         width: 25rem;
         margin: -60rem 1rem 2rem 50rem;
     }
@@ -286,7 +336,23 @@
 
 @media(min-width: 1300px){
 
-    .container__aside{
+    .container__div1{
+        width: 45rem;
+        height: 18rem;
+        margin: 0rem .5rem 2rem 3rem;
+    }
+
+    .lista{
+        height: 4rem;
+    }
+
+    .button__remove{
+        position: relative;
+        top: -30px;
+        left: 23rem;
+    }
+
+    .container__Aside{
         width: 25rem;
         margin: -60rem 1rem 2rem 53rem;
     }
@@ -294,8 +360,74 @@
 
 @media(min-width: 1400px){
 
-    .container__aside{
+    .container__Aside{
         width: 25rem;
         margin: -60rem 1rem 2rem 55rem;
+    }
+}
+
+@media(min-width: 1500px){
+
+    .titulo__div{
+        margin: 1.5rem 5rem;
+    }
+
+    .container__div1{
+        margin: 0rem .5rem 2rem 5rem;
+    }
+
+    .container__Aside{
+        width: 25rem;
+        margin: -60rem 1rem 2rem 60rem;
+    }
+}
+
+@media(min-width: 1600px){
+
+    .titulo__div{
+        margin: 1.5rem 10rem;
+    }
+
+    .container__div1{
+        margin: 0rem .5rem 2rem 10rem;
+    }
+
+    .container__Aside{
+        width: 25rem;
+        margin: -60rem 1rem 2rem 65rem;
+    }
+}
+
+@media(min-width: 1700px){
+
+    .cont{
+        margin-top: 5rem;
+        margin-left: 5rem;
+    }
+
+    .logo__header{
+        margin-top: 17rem;
+        margin-left: 8rem;
+    }
+
+    .titulo__div{
+        margin: 1.5rem 15rem;
+    }
+
+    .container__div1{
+        margin: 0rem .5rem 2rem 15rem;
+    }
+
+    .container__Aside{
+        width: 25rem;
+        margin: -60rem 1rem 2rem 70rem;
+    }
+}
+
+@media(min-width: 1750px){
+
+    .container__Aside{
+        width: 25rem;
+        margin: -60rem 1rem 2rem 75rem;
     }
 }

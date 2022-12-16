@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/globalStyles.css">
-    <link rel="stylesheet" href="/pages/home/index.css">
+    <link rel="stylesheet" href="/styles/index.css">
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
     <title>Webwomen</title>
     <meta
@@ -18,17 +18,19 @@
 <body>
   <header class="container__header">
     <img class="logo__header" src="/assets/img/logo.svg">
-    <h2 class="titulo__header">Lugar de mulher é onde ela quiser!</h2>
-    <p class="desc__header">
-      Está procurando oportunidades de estágio, emprego ou bolsas de    estudo?
-    </p>
-    <p class="desc__header">
-      Ou até mesmo oportunidades para atender eventos de tecnologia no Brasil e ao redor do mundo? 
-    </p>
-    <p class="desc__header--desc"> 
-      Confere aqui embaixo o que temos pra você!
-    </p>
-    <button type="submit" class="button__header">Ir para a sessão de vagas</button>
+    <div class="cont">
+      <h2 class="titulo__header">Lugar de mulher é onde ela quiser!</h2>
+      <p class="desc__header">
+        Está procurando oportunidades de estágio, emprego ou bolsas de    estudo?
+      </p>
+      <p class="desc__header">
+       Ou até mesmo oportunidades para atender   eventos de tecnologia no Brasil e ao redor do mundo? 
+      </p>
+      <p class="desc__header--desc"> 
+        Confere aqui embaixo o que temos pra você!
+      </p>
+      <button type="submit" class="button__header">Ir para a sessão de vagas</button>
+    </div>
   </header>
     <main>
       <div>
@@ -36,7 +38,10 @@
         <ul class="container__div"></ul>
       </div>
       <aside>
-        <ul class="container__aside"></ul>
+        <div class="container__Aside">
+          <h2 class="titulo__aside">Vagas selecionadas</h2>
+          <ul class="container__aside"></ul>
+        </div>
       </aside>
     </main>
     <script src="/pages/home/jobsData.js"></script>

@@ -26,7 +26,10 @@ function criarVagas(vaga)
     const descricao = document.createElement('p')
     descricao.classList.add('desc__vaga')
 
-    const spanTipo = document.createElement('button')
+    const divButton = document.createElement('div')
+    divButton.classList.add('divButton')
+
+    const spanTipo = document.createElement('span')
     spanTipo.classList.add('tipo__vaga')
 
     const button = document.createElement('button')
@@ -45,63 +48,71 @@ function criarVagas(vaga)
     button.innerText = 'Candidatar'
     button.dataset.id = vaga.id
 
-    div.append(h2, pEmpresa, pCidade, descricao, spanTipo, button)
+    divButton.append(spanTipo, button)
+    div.append(h2, pEmpresa, pCidade, descricao, divButton)
 
     return div
 }
 
 function renderCart(array)
 {
-    const vagasUl = document.querySelector('.container__aside')
+    const cartList = document.querySelector('.container__aside')
 
-    innerHTML = ''
+    cartList.innerHTML = ''
 
     if(vagaDoAside.length <= 0){
         const descAsides = descAside()
 
-        vagasUl.appendChild(descAsides)
+        cartList.appendChild(descAsides)
     }else{
-        array.forEach(vagas => {
-            const selecao = vagaSelecionadas(vagas)
-            vagasUl.appendChild(selecao)
+        array.forEach(vaga => {
+            const selecao = createCartProduct(vaga)
+            cartList.appendChild(selecao)
         })
     }
+    removeVaga(array)
 }
 
 function descAside()
 {
     const container = document.createElement('li')
-    const titulo = document.createElement('h2')
-    titulo.classList.add('titulo__aside')
     const mensagem = document.createElement('p')
     mensagem.classList.add('mensagem')
 
-    titulo.innerText = 'Vagas selecionadas'
     mensagem.innerText = 'Você ainda não aplicou para nenhuma vaga'
 
-    container.append(titulo, mensagem)
+    container.append(mensagem)
 
     return container
 }
 
-function vagaSelecionadas(vagas)
+function createCartProduct(vaga)
 {
     const liAside = document.createElement('li')
+    liAside.classList.add('lista')
 
     const h2Aside = document.createElement('h2')
-    h2Aside.innerText = vagas.title
+    h2Aside.classList.add('titulo__vaga--selecao')
+    h2Aside.innerText = vaga.title
 
     const pEmpresa = document.createElement('span')
-    pEmpresa.innerText = vagas.enterprise
+    pEmpresa.classList.add('empresa--selecao')
+    pEmpresa.innerText = vaga.enterprise
 
     const pCidade = document.createElement('span')
-    pCidade.innerText = location
+    pCidade.classList.add('cidade--selecao')
+    pCidade.innerText = vaga.location
 
     const imgButton = document.createElement('button')
-    imgButton.dataset.vagaId = vagas.vagaId 
-    imgButton.src = '../assets/img/trash.png'
+    imgButton.classList.add('button__remove')
+    imgButton.dataset.vagaId = vaga.vagaId 
 
-    liAside.append(h2Aside, pEmpresa, pCidade, imgButton)
+    const img = document.createElement('img')
+    img.classList.add('img')
+    img.src = '/assets/img/trash.png'
+
+    imgButton.append(img)
+    liAside.append(h2Aside, imgButton, pEmpresa, pCidade)
 
     return liAside
 }
@@ -112,14 +123,31 @@ function addVaga()
 
     buttons.forEach(button => {
         button.addEventListener('click', (event) => {
-            const vagass = jobsData.find(vagas => {
-                return vagas.id === Number(event.target.dataset.id)
+            const vagass = jobsData.find(vaga => {
+                return vaga.id === Number(event.target.dataset.id)
             })
             const vagasAside = {
                ...vagass, 
                vagaId: vagaDoAside.length + 1
             }
             vagaDoAside.push(vagasAside)
+            renderCart(vagaDoAside)
+        })
+    })
+}
+
+function removeVaga(array)
+{
+    const removeBtn = document.querySelectorAll('.button__remove')
+    removeBtn.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const productInCart = array.find(vaga => {
+                return vaga.vagaId === Number(event.target.dataset.vagaId)
+            })
+            const productIndex = array.indexOf(productInCart)
+            array.splice(productIndex, 1)
+
+            renderCart(array)
         })
     })
 }
