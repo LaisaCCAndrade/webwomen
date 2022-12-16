@@ -7,6 +7,8 @@ function renderVagas(vagas)
         const posts = criarVagas(vaga)
         listas.append(posts) 
     });
+
+    localStorage.setItem("@kenzieWebwoman", JSON.stringify(jobsData))
 }
 
 function criarVagas(vaga)
@@ -70,7 +72,6 @@ function renderCart(array)
             cartList.appendChild(selecao)
         })
     }
-    removeVaga(array)
 }
 
 function descAside()
@@ -107,6 +108,10 @@ function createCartProduct(vaga)
     imgButton.classList.add('button__remove')
     imgButton.dataset.vagaId = vaga.vagaId 
 
+    imgButton.addEventListener('click', () => {
+        removeVaga(vaga)
+    })
+
     const img = document.createElement('img')
     img.classList.add('img')
     img.src = '/assets/img/trash.png'
@@ -120,36 +125,33 @@ function createCartProduct(vaga)
 function addVaga()
 {
     const buttons = document.querySelectorAll('.button__candidatar')
+    const cardAdd = JSON.parse(localStorage.getItem("@kenzieWebwoman:vagas")) || []
+    const cardAdds = JSON.parse(localStorage.getItem("@kenzieWebwoman"))
 
     buttons.forEach(button => {
         button.addEventListener('click', (event) => {
-            const vagass = jobsData.find(vaga => {
+            const vagass = cardAdds.find(vaga => {
                 return vaga.id === Number(event.target.dataset.id)
-            })
+            })   
             const vagasAside = {
                ...vagass, 
-               vagaId: vagaDoAside.length + 1
+               vagaId: cardAdd.length + 1
             }
-            vagaDoAside.push(vagasAside)
-            renderCart(vagaDoAside)
+            cardAdd.push(vagasAside)
+            localStorage.setItem("@kenzieWebwoman:vagas", JSON.stringify(cardAdd))
+            renderCart(vagasAside)
         })
     })
 }
 
-function removeVaga(array)
+function removeVaga(item)
 {
-    const removeBtn = document.querySelectorAll('.button__remove')
-    removeBtn.forEach(button => {
-        button.addEventListener('click', (event) => {
-            const productInCart = array.find(vaga => {
-                return vaga.vagaId === Number(event.target.dataset.vagaId)
-            })
-            const productIndex = array.indexOf(productInCart)
-            array.splice(productIndex, 1)
-
-            renderCart(array)
-        })
-    })
+   vagaDoAside = vagaDoAside.filter((item1) => {
+        if(item1 !== item){
+            return item1
+        }
+   })
+   renderCart(vagaDoAside)
 }
 
 renderVagas(jobsData)

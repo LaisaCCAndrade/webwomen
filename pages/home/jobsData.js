@@ -28,4 +28,4 @@ const jobsData = [
   },
 ];
 
-const vagaDoAside = []
+let vagaDoAside = []
