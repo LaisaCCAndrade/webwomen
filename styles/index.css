@@ -142,7 +142,7 @@
     margin: 0 1rem 0 .7rem;
 }
 
-.button__remove{
+#button__remove{
     width: 20px;
     height: 20px;
     position: relative;
@@ -200,7 +200,7 @@
         margin: 0 1rem;
     }
 
-    .button__remove{
+    #button__remove{
         top: -1rem;
         left: 21rem;
     }
@@ -222,7 +222,7 @@
         margin: 0 0 0 4rem;
     }
 
-    .button__remove{
+    #button__remove{
         top: -1rem;
         left: 23rem;
     }
@@ -252,7 +252,7 @@
         margin: 1.5rem 4rem;
     }
 
-    .button__remove{
+    #button__remove{
         position: relative;
         top: -30px;
         left: 23rem;
@@ -302,7 +302,7 @@
         margin: 0 0 0 19rem;
     }
 
-    .button__remove{
+    #button__remove{
         position: relative;
         top: -30px;
         left: 23rem;
@@ -322,7 +322,7 @@
         margin: 0rem .5rem 2rem 1rem;
     }
 
-    .button__remove{
+    #button__remove{
         position: relative;
         top: -30px;
         left: 23rem;
@@ -346,7 +346,7 @@
         height: 4rem;
     }
 
-    .button__remove{
+    #button__remove{
         position: relative;
         top: -30px;
         left: 23rem;
