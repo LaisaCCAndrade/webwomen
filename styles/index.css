@@ -111,6 +111,10 @@
     margin-top: 1rem;
 }
 
+.button__candidatar:hover{
+    background-color: var(--color-brand-2);
+}
+
 .divButton{
     display: flex;
     flex-direction: column;
@@ -143,25 +147,41 @@
 }
 
 #button__remove{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     position: relative;
     top: -17px;
-    left: 13rem;
+    left: 12rem;
     border: none;
     cursor: pointer;
+    background-color: var(--color-grey-5);
+}
+
+#button__remove:hover{
+    background-color: var(--color-grey-3);
 }
 
 .container__Aside{
     background-color: var(--color-grey-6);
     width: 16rem;
     height: 22rem;
-    margin: 0rem .5rem 2rem .5rem;
+    margin: 0rem .5rem 2rem .2rem;
     padding: .1rem .1rem;
     border-radius: var(--radius-default);
     list-style: none;
     overflow-x: hidden;
 }
+
+.lista{
+    background-color: var(--color-grey-5);
+    margin: 1rem 1rem;
+    list-style: none;
+}
+
+.lista:hover{
+    background-color: var(--color-grey-4);
+}
+
 
 @media(min-width: 400px){
 
@@ -201,8 +221,8 @@
     }
 
     #button__remove{
-        top: -1rem;
-        left: 21rem;
+        top: -.5rem;
+        left: 19rem;
     }
 
     .container__Aside{
@@ -254,8 +274,8 @@
 
     #button__remove{
         position: relative;
-        top: -30px;
-        left: 23rem;
+        top: -18px;
+        left: 25rem;
     }
 
     .container__Aside{
@@ -278,6 +298,11 @@
 
     .button__candidatar{
         margin: 0 0 0 15rem;
+    }
+
+    #button__remove{
+        top: -18px;
+        left: 30rem;
     }
 
     .container__Aside{
@@ -303,9 +328,8 @@
     }
 
     #button__remove{
-        position: relative;
-        top: -30px;
-        left: 23rem;
+        top: -18px;
+        left: 35rem;
     }
 
     .container__Aside{
@@ -323,9 +347,8 @@
     }
 
     #button__remove{
-        position: relative;
-        top: -30px;
-        left: 23rem;
+        top: -18px;
+        left: 21rem;
     }
 
     .container__Aside{
@@ -347,9 +370,8 @@
     }
 
     #button__remove{
-        position: relative;
-        top: -30px;
-        left: 23rem;
+        top: -18px;
+        left: 21rem;
     }
 
     .container__Aside{
@@ -429,5 +451,21 @@
     .container__Aside{
         width: 25rem;
         margin: -60rem 1rem 2rem 75rem;
+    }
+}
+
+@media(min-width: 2000px){
+
+    .container__Aside{
+        width: 25rem;
+        margin: -60rem 1rem 2rem 85rem;
+    }
+}
+
+@media(min-width: 2000px){
+
+    .container__Aside{
+        width: 25rem;
+        margin: -60rem 1rem 2rem 90rem;
     }
 }

@@ -121,7 +121,21 @@ function createCartProduct(vaga)
 
     const imgButton = document.createElement('button')
     imgButton.id = 'button__remove'
-    imgButton.dataset.id = vaga.lixoId 
+    // imgButton.dataset.id = vaga.lixoId 
+    const button = document.createElement('button')
+    button.classList.add('button__candidatar')
+
+    if(vagasAlreadyExists(vaga) >= 0){
+        imgButton.classList.add('button__remove', 'button__fav')
+        imgButton.dataset.id = vaga.vagaId
+    }else{
+        imgButton.classList.add('button__remove')
+        imgButton.dataset.id = vaga.vagaId
+    }
+
+    imgButton.addEventListener('click', () => {
+        removeSelecao(vaga, imgButton, button)
+    })
 
     // imgButton.addEventListener('click', () => {
     //     removeVaga(vaga)
@@ -161,16 +175,31 @@ function selecaoRemove(vaga, button)
     localStorage.setItem("@kenzieWebwoman:vagas", JSON.stringify(vagaSelecionada))
 }
 
-// function rederFavorites()
-// {
-//     const favoritesBtn = document.querySelector('.button__candidatar')
-//     const favoritesArray = getFavoriteArray()
 
-//     favoritesBtn.addEventListener('click', () => {
-//         renderVagas(favoritesArray)
-//     })
-// }
+function vagasAlreadyExistss(vagaSearch)
+{
+    const vagaSelecionadas = getFavoriteArray()
 
+    return vagaSelecionadas.findIndex(vaga => vaga.id === vagaSearch.id)
+}
+
+function removeSelecao(vaga, imgButton, button)
+{
+    const vagaExistente = vagasAlreadyExistss(vaga)
+    let vagaSelecionadas = getFavoriteArray()
+
+    if(vagaExistente < 0){
+        vagaSelecionadas.push(vaga)
+        imgButton.classList.add('button__fav')
+        button.classList.add('button__fav')
+    }else{
+        vagaSelecionadas.splice(vagaExistente, 1)
+        imgButton.classList.remove('button__fav')
+        button.innerText = 'Candidatar'
+        button.classList.remove('button__fav')
+    }
+    localStorage.setItem("@kenzieWebwoman:vagas", JSON.stringify(vagaSelecionadas))
+}
 
 function addVaga()
 {
@@ -204,8 +233,7 @@ function removeVaga()
     lixo.forEach(lixos => {
         lixos.addEventListener('click', (event) => { 
             const localStorade = getFavoriteArray()
-            // const cardAdds = JSON.parse(localStorage.getItem("@kenzieWebwoman"))
-            let vagass = localStorade.find(vaga =>  vaga.lixoId === Number(event.target.dataset.lixoId))
+            let vagass = localStorade.find(vaga =>  vaga.vagaId === Number(event.target.dataset.vagaId))
              
             const removerVaga = {
                 ...vagass, 
@@ -219,6 +247,5 @@ function removeVaga()
 
 renderVagas(jobsData)
 renderCart(getFavoriteArray())
-// rederFavorites()
 addVaga()
 removeVaga()
