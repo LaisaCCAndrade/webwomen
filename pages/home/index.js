@@ -198,8 +198,6 @@ function removeSelecao(vaga, imgButton, button)
         button.classList.remove('button__fav')
        if(vagaSelecionadas){
         cartList.innerHTML = ''
-        button.innerText = 'Candidatar'
-        button.classList.remove('button__fav')
         const descAsides = descAside()
         cartList.appendChild(descAsides)
         window.location.reload()
