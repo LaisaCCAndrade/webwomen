@@ -184,16 +184,27 @@ function removeSelecao(vaga, imgButton, button)
 {
     const vagaExistente = vagasAlreadyExistss(vaga)
     let vagaSelecionadas = getFavoriteArray()
+    const cartList = document.querySelector('.container__aside')
 
     if(vagaExistente < 0){
         vagaSelecionadas.push(vaga)
         imgButton.classList.add('button__fav')
+        button.innerText = 'Candidatar'
         button.classList.add('button__fav')
     }else{
         vagaSelecionadas.splice(vagaExistente, 1)
         imgButton.classList.remove('button__fav')
         button.innerText = 'Candidatar'
         button.classList.remove('button__fav')
+       if(vagaSelecionadas == 0){
+        cartList.innerHTML = ''
+        button.innerText = 'Candidatar'
+        button.classList.remove('button__fav')
+        const descAsides = descAside()
+
+        cartList.appendChild(descAsides)
+        window.location.reload()
+       }
     }
     localStorage.setItem("@kenzieWebwoman:vagas", JSON.stringify(vagaSelecionadas))
 }
@@ -214,35 +225,12 @@ function addVaga()
                vagaId: localStorade.length + 1
             }
             localStorade.push(vagasAside)
-            const removeVaga = {
-                ...vagass, 
-                vagaId: localStorade.length - 1 
-            }
-            localStorade.pop(removeVaga)
+            
             renderCart(localStorade)
         })
     })
 }
 
-// function removeVaga()
-// {
-//    const lixo = document.querySelectorAll('#button__remove')
-//     lixo.forEach(lixos => {
-//         lixos.addEventListener('click', (event) => { 
-//             const localStorade = getFavoriteArray()
-//             let vagass = localStorade.find(vaga =>  vaga.vagaId === Number(event.target.dataset.vagaId))
-             
-//             const removerVaga = {
-//                 ...vagass, 
-//                 id: localStorade.length - 1
-//             }
-//             localStorade.pop(removerVaga)
-//             renderCart(localStorade)
-//         })
-//     })
-// }
-
 renderVagas(jobsData)
 renderCart(getFavoriteArray())
 addVaga()
-// removeVaga()
