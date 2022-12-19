@@ -74,20 +74,20 @@ function renderCart(array)
 {
     const cartList = document.querySelector('.container__aside')
     const vagasExiste = getFavoriteArray()
+    const cardAdds = JSON.parse(localStorage.getItem("@kenzieWebwoman"))
 
     cartList.innerHTML = ''
 
-    if(vagasExiste.length <= 0){
+    if(cardAdds.length <= 0){
         const descAsides = descAside()
 
         cartList.appendChild(descAsides)
     }else{
-        vagasExiste.forEach(vaga => {
+       vagasExiste.forEach(vaga => {
             const selecao = createCartProduct(vaga)
             cartList.appendChild(selecao)   
         })
     }  
-    localStorage.setItem("@kenzieWebwoman", JSON.stringify(vagasExiste)) 
 }
 
 function descAside()
