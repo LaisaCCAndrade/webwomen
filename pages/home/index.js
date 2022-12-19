@@ -78,7 +78,7 @@ function renderCart(array)
 
     cartList.innerHTML = ''
 
-    if(cardAdds.length <= 0){
+    if(vagasExiste.length <= 0){
         const descAsides = descAside()
 
         cartList.appendChild(descAsides)
