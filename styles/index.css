@@ -461,11 +461,3 @@
         margin: -60rem 1rem 2rem 85rem;
     }
 }
-
-@media(min-width: 2000px){
-
-    .container__Aside{
-        width: 25rem;
-        margin: -60rem 1rem 2rem 90rem;
-    }
-}

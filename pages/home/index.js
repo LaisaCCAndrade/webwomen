@@ -75,6 +75,7 @@ function renderCart(array)
     const cartList = document.querySelector('.container__aside')
     const vagasExiste = getFavoriteArray()
     const cardAdds = JSON.parse(localStorage.getItem("@kenzieWebwoman"))
+   
 
     cartList.innerHTML = ''
 
@@ -172,7 +173,6 @@ function selecaoRemove(vaga, button)
     localStorage.setItem("@kenzieWebwoman:vagas", JSON.stringify(vagaSelecionada))
 }
 
-
 function vagasAlreadyExistss(vagaSearch)
 {
     const vagaSelecionadas = getFavoriteArray()
@@ -196,12 +196,11 @@ function removeSelecao(vaga, imgButton, button)
         imgButton.classList.remove('button__fav')
         button.innerText = 'Candidatar'
         button.classList.remove('button__fav')
-       if(vagaSelecionadas == 0){
+       if(vagaSelecionadas){
         cartList.innerHTML = ''
         button.innerText = 'Candidatar'
         button.classList.remove('button__fav')
         const descAsides = descAside()
-
         cartList.appendChild(descAsides)
         window.location.reload()
        }
