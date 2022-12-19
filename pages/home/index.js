@@ -73,20 +73,21 @@ function getFavoriteArray()
 function renderCart(array)
 {
     const cartList = document.querySelector('.container__aside')
-    const cardAdds = JSON.parse(localStorage.getItem("@kenzieWebwoman"))
+    const vagasExiste = getFavoriteArray()
 
     cartList.innerHTML = ''
 
-    if(cardAdds.length <= 0){
+    if(vagasExiste.length <= 0){
         const descAsides = descAside()
 
         cartList.appendChild(descAsides)
     }else{
-        array.forEach(vaga => {
+        vagasExiste.forEach(vaga => {
             const selecao = createCartProduct(vaga)
             cartList.appendChild(selecao)   
         })
-    }   
+    }  
+    localStorage.setItem("@kenzieWebwoman", JSON.stringify(vagasExiste)) 
 }
 
 function descAside()
