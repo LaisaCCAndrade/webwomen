@@ -122,7 +122,7 @@ function createCartProduct(vaga)
 
     const imgButton = document.createElement('button')
     imgButton.id = 'button__remove'
-    // imgButton.dataset.id = vaga.lixoId 
+
     const button = document.createElement('button')
     button.classList.add('button__candidatar')
 
@@ -137,10 +137,6 @@ function createCartProduct(vaga)
     imgButton.addEventListener('click', () => {
         removeSelecao(vaga, imgButton, button)
     })
-
-    // imgButton.addEventListener('click', () => {
-    //     removeVaga(vaga)
-    // })
     
     const img = document.createElement('img')
     img.classList.add('img')
@@ -228,25 +224,25 @@ function addVaga()
     })
 }
 
-function removeVaga()
-{
-   const lixo = document.querySelectorAll('#button__remove')
-    lixo.forEach(lixos => {
-        lixos.addEventListener('click', (event) => { 
-            const localStorade = getFavoriteArray()
-            let vagass = localStorade.find(vaga =>  vaga.vagaId === Number(event.target.dataset.vagaId))
+// function removeVaga()
+// {
+//    const lixo = document.querySelectorAll('#button__remove')
+//     lixo.forEach(lixos => {
+//         lixos.addEventListener('click', (event) => { 
+//             const localStorade = getFavoriteArray()
+//             let vagass = localStorade.find(vaga =>  vaga.vagaId === Number(event.target.dataset.vagaId))
              
-            const removerVaga = {
-                ...vagass, 
-                id: localStorade.length - 1
-            }
-            localStorade.pop(removerVaga)
-            renderCart(localStorade)
-        })
-    })
-}
+//             const removerVaga = {
+//                 ...vagass, 
+//                 id: localStorade.length - 1
+//             }
+//             localStorade.pop(removerVaga)
+//             renderCart(localStorade)
+//         })
+//     })
+// }
 
 renderVagas(jobsData)
 renderCart(getFavoriteArray())
 addVaga()
-removeVaga()
+// removeVaga()
