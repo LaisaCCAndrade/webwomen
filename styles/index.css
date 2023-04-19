@@ -50,6 +50,11 @@
     cursor: pointer;
 }
 
+a {
+    text-decoration: none;
+    color: var(--color-grey-6);
+}
+
 .titulo__div{
     color: var(--color-grey-1);
     font-size: var(--title-4);
